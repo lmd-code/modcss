@@ -62,7 +62,7 @@ Currently there is only one utility class, but it is one I use in every project.
 
 ### `.vh, .visually-hidden`
 
-> ![TIP]
+> [!TIP]
 > Use whichever class name you prefer: short version or descriptive version
 
 This class *visually* hides content by moving it "off-screen" while leaving it in the flow of content (the DOM). It makes it invisible to sighted visitors, but still present for screen-readers (used by visually-impaired visitors) and web-crawlers.
