@@ -1,0 +1,649 @@
+/**
+ * Mildly Opinionated Default CSS
+ * @author: LMD-Code
+ * @version: 2.0.0
+ * @see: https://github.com/lmd-code/modcss/
+ *
+ * Sections of this file:
+ * 1. CSS Variable Definitions
+ * 2. Mildly Opinionated Defaults
+ * 3. Utility CSS Classes
+ */
+
+/**
+ * 1. CSS Variable Definitions
+ * It is recommended that you copy/paste this section to the top of your site's main CSS file and
+ * edit it there to _overwrite_ these variables so that you don't need to keep editing this file
+ * if it changes in future versions. You can then just use the already minified version of this file.
+ */
+:root {
+    --mod-font-serif: Cambria, Times, "Times New Roman", serif;
+    --mod-font-sans: Segoe, 'Segoe UI', 'Helvetica Neue', 'Arial Nova', Helvetica, Arial, sans-serif;
+    --mod-font-mono: Consolas, monaco, 'Courier New', monospace;
+    --mod-font-size: 16px;
+    --mod-body-size: 1rem; /* default body text size */
+    --mod-font-weight: 400;
+    --mod-margins: 1rem 0;
+    --mod-borders: 1px solid #a0a0a0;
+    --mod-focus-outline: 2px dotted #202020;
+    --mod-button: #d0d0d0;
+    --mod-button-hover: #e0e0e0;
+    --mod-button-active: #b0b0b0;
+    --mod-text-dark: #000000;
+    --mod-text-medium: #606060;
+    --mod-text-light: #ffffff;
+    --mod-bg-dark: #404040;
+    --mod-bg-medium: #e3e3e3;
+    --mod-bg-light: #ffffff;
+    --mod-mark-bg: #ffff44;
+    --mod-mark-text: #000000;
+}
+@media screen and (min-width: 900px) {
+    :root {
+        --mod-body-size: 1.125rem; /* wide-screen body text size */
+    }
+}
+
+/**
+ * 2. Mildly Opinionated Defaults
+ */
+
+html,
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    min-width: 0; /* fix flexbox 'min-width: auto' and <pre> tag overflow bug */
+}
+
+html {
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    font-size: var(--mod-font-size); /* base pixel font size */
+    font-size-adjust: 0.5;
+    font-weight: var(--mod-font-weight);
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--mod-bg-light);
+    color: var(--mod-text-dark);
+    font-family: var(--mod-font-serif);
+    font-size: var(--mod-body-size); /* REM size according to screen width */
+}
+
+header,
+footer,
+main,
+article,
+aside,
+section {
+    display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+pre,
+address {
+    margin: var(--mod-margins);
+    padding: 0;
+}
+
+p:last-child,
+ul:last-child,
+ol:last-child,
+dl:last-child,
+pre:last-child,
+address:last-child {
+    margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 1rem;
+    font-family: var(--mod-font-sans);
+    font-weight: 500;
+}
+h1 {
+    font-size: 2em; 
+    line-height: 1;
+}
+h2 {
+    font-size: 1.8em;
+    line-height: 1.05;
+}
+h3 {
+    font-size: 1.6em;
+    line-height: 1.1;
+}
+h4 {
+    font-size: 1.4em;
+    line-height: 1.15;
+}
+h5 {
+    font-size: 1.2em;
+    line-height: 1.2;
+}
+h6 {
+    font-size: 1em;
+    line-height: 1.25;
+}
+
+ul,
+ol {
+    list-style-position: outside;
+}
+dt {
+    font-weight: 500;
+}
+li,
+dd {
+    margin: 0 0 0.5rem 2rem;
+}
+li:last-child,
+dt:last-child,
+dd:last-child {margin-bottom: 0;}
+li ul,
+li ol,
+li dl,
+dd ul,
+dd ol,
+dd dl {
+    margin: 0;
+}
+
+blockquote,
+figure > blockquote ~ figcaption {
+    margin: var(--mod-margins);
+    margin-left: 3rem;
+    margin-right: 3rem;
+    padding: 0;
+}
+blockquote > :first-child {margin-top: 0;}
+blockquote > :last-child {margin-bottom: 0;}
+
+table {
+    margin: var(--mod-margins);
+    border: var(--mod-borders);
+    border-collapse: collapse;
+    padding: 0;
+}
+caption {
+    font-style: normal;
+}
+th,
+td {
+    border: var(--mod-borders);
+    padding: 0.25rem 0.5rem;
+}
+th {
+    font-weight: bold;
+}
+
+pre {
+    position: relative;
+    margin: var(--mod-margins);
+    font-family: var(--mod-font-mono);
+    font-weight: var(--mod-font-weight);
+    tab-size: 4;
+    line-height: 1.2;
+    overflow-x: auto;
+}
+
+pre > code {
+    display: block;
+    border: var(--mod-borders);
+    border-radius: 0.125rem;
+    padding: 2rem 1rem 1rem 1rem;
+    background-color: var(--mod-bg-dark);
+    color: var(--mod-text-light);
+    overflow-x: auto;
+}
+
+pre > code[title]::before {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    border: var(--mod-borders);
+    border-radius: 0.125rem 0.125rem 0 0;
+    padding: 0.25em 0.5em;
+    background-color: var(--mod-bg-medium);
+    color: var(--mod-text-dark);
+    font-size: 0.75em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+hr {
+    height: 1px;
+    border: 0;
+    margin: 1.5rem 0;
+    line-height: 0;
+    background-color: var(--mod-bg-dark);
+}
+
+/** INLINE **/
+
+kbd,
+samp,
+var,
+code,
+tt {
+    font-family: var(--mod-font-mono);
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+i,
+em,
+cite {
+    font-style: italic;
+}
+
+small {
+    font-size: 0.75em;
+}
+
+mark {
+    background-color: var(--mod-mark-bg);
+    color: var(--mod-mark-text);
+}
+
+del {
+    text-decoration-line: line-through;
+    text-decoration-style: double;
+}
+
+ins {
+    text-decoration-line: underline;
+    text-decoration-style: double;
+}
+
+sup,
+sub {
+    position: relative;
+    top: -0.4em;
+    line-height: 0;
+    font-size: 0.75em;
+    vertical-align: baseline;
+}
+sub { 
+    top: 0.4em; 
+}
+
+/** IMAGES **/
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border: none;
+}
+
+picture,
+audio,
+video,
+canvas {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: var(--mod-margins);
+    border: none;
+    padding: 0;
+}
+
+figure {
+    display: block;
+    margin: var(--mod-margins);
+    padding: 0;
+}
+figcaption {
+    display: block;
+    font-style: normal;
+}
+figure img {
+    display: block;
+}
+
+figure > picture,
+figure > audio,
+figure > video,
+figure > canvas {
+    margin: 0;
+}
+
+svg {
+    overflow: hidden;
+}
+
+/**
+ * The DETAILS element is ignored by older IE browsers, so we don't want to mess with it in those.
+ * Also block elements (e.g. headings) are not allowed inside SUMMARY  and forcing it has poor 
+ * accessibility, so we are not using the 'summary > * {display:inline}' technique.
+ */
+@supports not (-ms-ime-align: auto) {
+    details {margin: var(--mod-margins);}
+    details > summary {cursor: default; /* arrow instead of text-select */}
+    details > :nth-child(2) {margin-top: 0; /* first element after summary */}
+    details > :last-child {margin-bottom: 0;}
+}
+
+/** IFRAMES/EMBEDS/OBJECTS */
+
+embed, iframe, object {
+    display: block;
+    width: 100%;
+    margin: var(--mod-margins);
+    border: none;
+    padding: 0;
+}
+
+/** FORMS **/
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    margin: 0 0 1rem 0;
+    border: var(--mod-borders);
+    border-radius: 0.125rem;
+    padding: 1em;
+}
+fieldset > :nth-child(2) {margin-top: 0; /* first child after legend */}
+fieldset > :last-child {margin-bottom: 0;}
+
+legend {
+    padding: 0 0.25em;
+    font-weight: 500;
+}
+
+/* <input> / <button> */
+input,
+button {
+    margin: 0;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: var(--mod-font-weight);
+    vertical-align: baseline;
+    text-transform: none;
+    overflow: visible;
+}
+
+input:focus,
+textarea:focus {
+    outline: var(--mod-focus-outline);
+    outline-offset: -2px;
+}
+
+/* Text inputs */
+[type=date],
+[type=datetime-local],
+[type=month],
+[type=week],
+[type=time],
+[type=email],
+[type=url],
+[type=tel],
+[type=number],
+[type=password],
+[type=search],
+[type=text] {
+    border: var(--mod-borders);
+    border-radius: 0.125rem;
+    padding: 0.25em 0.5em;
+}
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-calendar-picker-indicator {
+    /* Make the height of the input the same as other inputs in Chrome/Edge */
+    padding: 0;
+    padding-inline: 0;
+}
+
+/* Checkbox / Radio inputs */
+[type=checkbox],
+[type=radio] {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: var(--mod-borders);
+    line-height: 1;
+    vertical-align: middle;
+    cursor: default;
+}
+
+/* Color picker */
+[type=color] {
+    width: 1.5em;
+    height: 1.5em;
+    border: var(--mod-borders);
+    border-radius: 0.125rem;
+    padding-block: 0;
+    padding-inline: 0;
+    padding: 0.125em;
+    background-color: var(--mod-bg-light); 
+    vertical-align: middle;
+    cursor: default;
+}
+::-webkit-color-swatch-wrapper {
+    padding: 0; /* Decrease inner padding in Chrome/Edge */
+}
+
+/* File Selector */
+[type=file] {
+    cursor: default;
+}
+::file-selector-button,
+::-webkit-file-upload-button {
+    /* Make the button look like other buttons */
+    border: var(--mod-borders);
+    border-radius: 0.125rem;
+    padding: 0.25em 0.5em;
+    background-color: var(--mod-button);
+    color: var(--mod-text-dark);
+    font-family: var(--mod-font-sans);
+    font-size: 1em;
+    font-weight: var(--mod-font-weight);
+    cursor: default;
+}
+::file-selector-button:hover,
+::-webkit-file-upload-button:hover {
+    background-color: var(--mod-button-hover);
+}
+::file-selector-button:active,
+::-webkit-file-upload-button:active {
+    background-color: var(--mod-button-active);
+}
+
+/* Image (Button) */
+[type=image] {
+    border: none;
+    padding: 0;
+    vertical-align: middle;
+    transition: all .2s ease-in-out;
+}
+[type=image]:hover {
+    transform: scale(1.05);
+}
+[type=image]:not(:disabled):active {
+    transform: scale(0.95);
+}
+
+/* Range */
+[type=range] {
+    vertical-align: middle;
+}
+[type=range]:disabled,
+[type=range]:disabled:active,
+[type=range]:disabled:hover,
+[type=range]:disabled:focus {
+    background-color: transparent;
+}
+
+/* <button> <input type=button|submit|reset> */
+button,
+[type=button],
+[type=submit],
+[type=reset] {
+    -webkit-appearance: button;
+    appearance: button;
+    border: var(--mod-borders);
+    border-radius: 0.25rem;
+    padding: 0.25em 0.5em;
+    background-color: var(--mod-button);
+    color: var(--mod-text-dark);
+    cursor: default;
+    transition: all .2s ease-in-out;
+}
+button:hover,
+[type=button]:hover,
+[type=submit]:hover,
+[type=reset]:hover {
+    background-color: var(--mod-button-hover);
+}
+button:focus,
+[type=button]:focus,
+[type=submit]:focus,
+[type=reset]:focus {
+    background-color: var(--mod-button-hover);
+    outline: var(--mod-focus-outline);
+    outline-offset: -2px;
+}
+button:not(:disabled):active,
+[type=button]:not(:disabled):active,
+[type=submit]:not(:disabled):active,
+[type=reset]:not(:disabled):active {
+    transform: scale(0.95);
+    background-color: var(--mod-button-active);
+}
+
+/* <meter> <progress> */
+meter,
+progress {
+    border: var(--mod-borders);
+}
+::-webkit-progress-bar,
+::-webkit-meter-bar {
+    background: var(--mod-bg-light);
+}
+::-webkit-meter-bar {
+    border: var(--mod-borders);
+}
+::-webkit-progress-value {
+    background-color: var(--mod-button-active);
+}
+
+/* <textarea> */
+textarea {
+    max-width: 100%;
+    margin: 0;
+    border: var(--mod-borders);
+    border-radius: 0.125rem;
+    padding: 0.25em 0.5em;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: var(--mod-font-weight);
+    resize: vertical;
+    vertical-align: top; /* Removes weird gap after box */
+}
+
+/* <select> */
+select {
+    margin: 0;
+    border: var(--mod-borders);
+    padding-block: 0;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: var(--mod-font-weight);
+    background: var(--mod-bg-light);
+}
+select:focus-visible,
+select:focus-within {
+    outline: var(--mod-focus-outline);
+    outline-offset: -2px;
+}
+select:not([multiple]) {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+option {
+    font: inherit;
+}
+option:disabled {
+    font-style: italic;
+    color: var(--mod-text-medium);
+}
+select > option,
+datalist > option {
+    padding: 0.25em 0.5em;
+}
+optgroup[label] {
+    font-style: normal;
+    font-weight: 700;
+}
+optgroup[label]::before {
+    padding-left: 0.25em;
+}
+optgroup > option {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-right: 0.5em;
+    font-weight: normal;
+    font-style: normal;
+}
+
+:disabled,
+:disabled:active,
+:disabled:hover,
+:disabled:focus {
+    outline: none;
+    background-color: var(--mod-bg-medium);
+    color: var(--mod-text-medium);
+    font-style: italic;
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+[hidden] {
+    display: none;
+}
+
+/**
+ * 3. Utility Classes
+ */
+
+/* Hide content off-screen so that it is only readable by screen-readers (use either class name) */
+.vh, .visually-hidden {
+	clip: rect(0 0 0 0); 
+	clip-path: inset(50%);
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	white-space: nowrap;
+	overflow: hidden;
+}

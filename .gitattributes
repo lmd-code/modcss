@@ -1,0 +1,14 @@
+# Exclude files/dirs from exporting
+.github        export-ignore
+.gitattributes export-ignore
+.gitignore     export-ignore
+.gitkeep       export-ignore
+
+# Exclude from diffs
+CHANGELOG.md linguist-generated
+*.min.css    linguist-generated
+
+# Exclude from stats
+*.min.css linguist-vendored
+*.md      linguist-vendored
+*.txt     linguist-vendored
