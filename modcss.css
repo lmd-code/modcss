@@ -209,10 +209,14 @@ pre > code {
     display: block;
     border: var(--mod-borders);
     border-radius: 0.125rem;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 1rem;
     background-color: var(--mod-bg-dark);
     color: var(--mod-text-light);
     overflow-x: auto;
+}
+
+pre > code[title] {
+    padding-top: 2rem;
 }
 
 pre > code[title]::before {
